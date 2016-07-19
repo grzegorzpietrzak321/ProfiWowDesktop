@@ -31,6 +31,11 @@ namespace profiwowdektop
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public string Login(CUser user)
         {
             string serializowanyuser = JsonConvert.SerializeObject(user);

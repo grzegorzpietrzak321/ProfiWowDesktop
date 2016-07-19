@@ -43,3 +43,6 @@ C:\Users\grzesiek\OneDrive\VSRepos\profiwowdesktop\profiwowdektop\obj\Debug\Main
 C:\Users\grzesiek\OneDrive\VSRepos\profiwowdesktop\profiwowdektop\obj\Debug\profiwowdektop.g.resources
 C:\Users\grzesiek\OneDrive\VSRepos\profiwowdesktop\profiwowdektop\obj\Debug\profiwowdektop.Properties.Resources.resources
 C:\Users\grzesiek\OneDrive\VSRepos\profiwowdesktop\profiwowdektop\obj\Debug\profiwowdektop.csproj.GenerateResource.Cache
+C:\Users\grzesiek\OneDrive\VSRepos\ProfiWowDesktop\ProfiWowDesktop\bin\Debug\profiwowdektop.exe.config
+C:\Users\grzesiek\OneDrive\VSRepos\ProfiWowDesktop\ProfiWowDesktop\obj\Debug\profiwowdektop.exe
+C:\Users\grzesiek\OneDrive\VSRepos\ProfiWowDesktop\ProfiWowDesktop\obj\Debug\profiwowdektop.pdb
