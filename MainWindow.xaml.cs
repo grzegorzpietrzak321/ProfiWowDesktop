@@ -22,23 +22,28 @@ namespace profiwowdektop
     {
 
         public string url = "http://profi-wow-api.sebrogala.com/";
-        private ApiConnector connector;
-
+        
         public MainWindow()
         {
             InitializeComponent();
-            connector = new ApiConnector();
+            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            LogiInWindow loginWindow = new LogiInWindow(connector);
+            LogiInWindow loginWindow = new LogiInWindow();
             loginWindow.Show();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            textBox.Text = connector.userBearer;
+            //textBox.Text = connector.userBearer;
+            textBox.Text = AbstractApiConnector.userBearer;
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            //connector.GetRespGET("/professions", "Authorization: Bearer " + connector.userBearer);
         }
     }
 }

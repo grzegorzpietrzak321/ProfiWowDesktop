@@ -21,13 +21,13 @@ namespace profiwowdektop
     {
         public string email;
         public string password;
-        public ApiConnector connector;
+        public UserApiConnector connector;
         
 
-        public LogiInWindow(ApiConnector connector)
+        public LogiInWindow()
         {
             InitializeComponent();
-            this.connector = connector;
+            this.connector = new UserApiConnector();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -36,7 +36,7 @@ namespace profiwowdektop
             password = tbxPassword.Text.ToString();
 
             CUser user = new CUser(email, password);
-            connector.userBearer = connector.GetResp("/user/login", "POST", (connector.Login(user)));
+            AbstractApiConnector.userBearer = connector.Login("/user/login", user);
 
             this.Close();
         }
