@@ -30,19 +30,15 @@ namespace profiwowdektop
             connector = new ApiConnector();
         }
 
-        
-
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            
-
             LogiInWindow loginWindow = new LogiInWindow(connector);
             loginWindow.Show();
+        }
 
-          
-            
-
-                       
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.Text = connector.userBearer;
         }
     }
 }

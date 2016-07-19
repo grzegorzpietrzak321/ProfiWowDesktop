@@ -36,9 +36,9 @@ namespace profiwowdektop
             password = tbxPassword.Text.ToString();
 
             CUser user = new CUser(email, password);
+            connector.userBearer = connector.GetResp("/user/login", "POST", (connector.Login(user)));
 
-            
-            connector.GetResp("/user/login", "GET", (connector.Login(user)));
+            this.Close();
         }
     }
 }
