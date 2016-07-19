@@ -9,21 +9,42 @@ namespace profiwowdektop
 {
     public class ApiConnector
     {
+        /// <summary>
+        /// constant adres to serv
+        /// </summary>
         const string API_SERV_URL = "http://profi-wow-api.sebrogala.com";
         public string userBearer { get; set; }
 
-        /// <summary>
-        /// Occurs when ApiConnector instance begins a web request.
-        /// </summary>
-        public event EventHandler BeginRequest;
+        private string UserRegister(CUserRegister userregister)
+        {
 
-        /// <summary>
-        /// Occurs when ApiConnector instance ends previously started web request.
-        /// </summary>
-        public event EventHandler EndRequest;
+            return "";
+        }
+            
+        private string Login(CUser user)
+        {
+            string serializowanyuser = JsonConvert.SerializeObject(user);
 
+            string postData = serializowanyuser;
+            byte[] byte1 = Encoding.ASCII.GetBytes(postData);
+
+            string response = GetResponse("/user/login", byte1);
+            return "";
+        }
+
+        private string GetProfessions(CProfession profession)
+        {
+
+            return "";
+        }
+
+        private string PostItem(CItem item)
+        {
+
+            return "";
+        }
         /// <summary>
-        /// OKAPI installation which the ApiConnector uses for method calls.
+        /// 
         /// </summary>
 
         public ApiConnector()
@@ -36,18 +57,7 @@ namespace profiwowdektop
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public string Login(CUser user)
-        {
-            string serializowanyuser = JsonConvert.SerializeObject(user);
-
-            string postData = serializowanyuser;
-            ASCIIEncoding encoding = new ASCIIEncoding();
-            byte[] byte1 = encoding.GetBytes(postData.ToString());
-
-
-            string response = GetResponse("/user/login", byte1);
-            return "";
-        }
+        
         
         /// <summary>
         /// read a WebResponse and return content as string
@@ -58,7 +68,7 @@ namespace profiwowdektop
                 return "";
             Stream stream = response.GetResponseStream();
             StreamReader reader = new StreamReader(stream);
-            var r = reader.ReadToEnd();
+            var r = reader.ReadToEnd().Trim();
             return r;
         }
         
@@ -66,11 +76,10 @@ namespace profiwowdektop
         /// make a request for the specified URL, read response and return it's content
         /// throw a WebException if response is not 200
         /// </summary>
-        public string GetResponse(string url, byte [] requestBody)
+        public string GetResponse(string url, byte[] requestBody)
         {
             //this.BeginRequest(this, null);
-            try
-            {
+            
 
                 WebRequest request = WebRequest.Create(API_SERV_URL + url);
                 request.Timeout = 15000;
@@ -78,33 +87,13 @@ namespace profiwowdektop
                                       
                 request.Method = "POST";
                 //request.Headers.Add("Authorization", "Authorization: Bearer " + userBearer);
-                request.GetRequestStream().Write(requestBody, 0, requestBody.Length);
+                Stream str = request.GetRequestStream();
+                str.Write(requestBody, 0, requestBody.Length);
+                str.Close();
+            //TODO make more humanable how to create body req
 
-                //TODO make more humanable how to create body req
+            ReadResponse(str);
 
-
-                using (WebResponse response = request.GetResponse())
-                {
-                    return ReadResponse(response);
-                }
-            }
-            catch (WebException e)
-            {
-                MessageBoxResult result = MessageBox.Show(e.Response.ToString());
-
-                //TODO how to catch body responde
-
-                //Stream receiveStream = e.GetResponseStream();
-                //StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-                //txtBlock.Text = readStream.ReadToEnd();
-
-
-                throw;
-            }
-            finally
-            {
-                //this.EndRequest(this, null);
-            }
         }
     }
 }

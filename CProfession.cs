@@ -1,6 +1,6 @@
 ﻿namespace profiwowdektop
 {
-    class CProfession
+    public class CProfession
     {
         public string name;
     }

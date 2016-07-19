@@ -39,7 +39,7 @@ namespace profiwowdektop
             LogiInWindow loginWindow = new LogiInWindow(connector);
             loginWindow.Show();
 
-
+            //textBox.Text = connector.Re
             
 
                        

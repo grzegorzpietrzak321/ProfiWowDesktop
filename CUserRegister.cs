@@ -1,6 +1,6 @@
 ﻿namespace profiwowdektop
 {
-    class CUserRegister
+    public class CUserRegister
     {
         public string username;
         public string email;
