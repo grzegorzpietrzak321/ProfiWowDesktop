@@ -21,15 +21,11 @@ namespace profiwowdektop
             return "";
         }
             
-        private string Login(CUser user)
+        public string Login(CUser user)
         {
             string serializowanyuser = JsonConvert.SerializeObject(user);
-
             string postData = serializowanyuser;
-            byte[] byte1 = Encoding.ASCII.GetBytes(postData);
-
-            string response = GetResponse("/user/login", byte1);
-            return "";
+            return postData;
         }
 
         private string GetProfessions(CProfession profession)
@@ -51,14 +47,7 @@ namespace profiwowdektop
         {
 
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        
-        
+                        
         /// <summary>
         /// read a WebResponse and return content as string
         /// </summary>
@@ -68,7 +57,7 @@ namespace profiwowdektop
                 return "";
             Stream stream = response.GetResponseStream();
             StreamReader reader = new StreamReader(stream);
-            var r = reader.ReadToEnd().Trim();
+            var r = reader.ReadToEnd().Trim().ToString();
             return r;
         }
         
@@ -76,24 +65,49 @@ namespace profiwowdektop
         /// make a request for the specified URL, read response and return it's content
         /// throw a WebException if response is not 200
         /// </summary>
-        public string GetResponse(string url, byte[] requestBody)
+        public WebResponse GetResp(string url, string method, string requestBody)
         {
-            //this.BeginRequest(this, null);
+            // 1. create request
+            WebRequest request = WebRequest.Create(API_SERV_URL + url);
+            // 2. set credentialis if required
+            request.Credentials = CredentialCache.DefaultCredentials;
+            request.Timeout = 15000;
+            // 3. set method
+            request.Method = method;
+            // 4. other stuff
+            request.ContentType = "application/json; charset=UTF-8";
+
+            // 5. do some body to send
+            using (var StreamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                StreamWriter.Write(requestBody);
+                StreamWriter.Flush();
+                StreamWriter.Close();
+            }
+
+            // 6. get response
+            WebResponse response = request.GetResponse();
             
-
-                WebRequest request = WebRequest.Create(API_SERV_URL + url);
-                request.Timeout = 15000;
-                request.Proxy = null;
-                                      
-                request.Method = "POST";
-                //request.Headers.Add("Authorization", "Authorization: Bearer " + userBearer);
-                Stream str = request.GetRequestStream();
-                str.Write(requestBody, 0, requestBody.Length);
-                str.Close();
+            // Display the status.
+            // Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+            // Get the stream containing content returned by the server.
+            Stream dataStream = response.GetResponseStream();
+            // Open the stream using a StreamReader for easy access.
+            StreamReader reader = new StreamReader(dataStream);
+            // Read the content.
+            string responseFromServer = reader.ReadToEnd();
+            // Display the content.
+            Console.WriteLine(responseFromServer);
+            // Clean up the streams and the response.
+            reader.Close();
+            response.Close();
+            
             //TODO make more humanable how to create body req
-
-            ReadResponse(str);
-
-        }
+            //WebRequest request = WebRequest.Create(API_SERV_URL + url);
+            
+            //request.Headers.Add("Authorization", "Authorization: Bearer " + userBearer);
+            
+            return response;
+         }
     }
 }

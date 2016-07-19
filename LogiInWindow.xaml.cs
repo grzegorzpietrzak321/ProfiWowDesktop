@@ -37,9 +37,8 @@ namespace profiwowdektop
 
             CUser user = new CUser(email, password);
 
-            connector.userBearer = connector.Login(user).ToString();
-           // connector
-
+            
+            connector.GetResp("/user/login", "GET", (connector.Login(user)));
         }
     }
 }
