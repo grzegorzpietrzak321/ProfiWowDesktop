@@ -26,7 +26,6 @@ namespace profiwowdektop
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -37,13 +36,13 @@ namespace profiwowdektop
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            //textBox.Text = connector.userBearer;
             textBox.Text = AbstractApiConnector.userBearer;
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            //connector.GetRespGET("/professions", "Authorization: Bearer " + connector.userBearer);
+            AbstractApiConnector connector = new UserApiConnector();
+            connector.GetRespGET("/professions", "Authorization: Bearer " + AbstractApiConnector.userBearer);
         }
     }
 }

@@ -32,8 +32,8 @@ namespace profiwowdektop
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            email = tbxLogin.Text.ToString();
-            password = tbxPassword.Text.ToString();
+            email = tbxLogin.Text;
+            password = tbxPassword.Text;
 
             CUser user = new CUser(email, password);
             AbstractApiConnector.userBearer = connector.Login("/user/login", user);
