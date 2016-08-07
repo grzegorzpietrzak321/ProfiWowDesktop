@@ -37,7 +37,7 @@ namespace profiwowdektop
 
             CUser user = new CUser(email, password);
             AbstractApiConnector.userBearer = connector.Login("/user/login", user);
-
+            AbstractApiConnector.userBearer = AbstractApiConnector.userBearer.Substring(1, AbstractApiConnector.userBearer.Length - 2);
             this.Close();
         }
     }
