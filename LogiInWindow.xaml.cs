@@ -19,25 +19,25 @@ namespace profiwowdektop
     /// </summary>
     public partial class LogiInWindow : Window
     {
-        public string email;
-        public string password;
-        public UserApiConnector connector;
+        public string Email;
+        public string Password;
+        public UserApiConnector Connector;
         
 
         public LogiInWindow()
         {
             InitializeComponent();
-            this.connector = new UserApiConnector();
+            this.Connector = new UserApiConnector();
         }
          
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            email = tbxLogin.Text;
-            password = tbxPassword.Text;
+            Email = TbxLogin.Text;
+            Password = TbxPassword.Text;
 
-            CUser user = new CUser(email, password);
-            AbstractApiConnector.userBearer = connector.Login("/user/login", user);
-            AbstractApiConnector.userBearer = AbstractApiConnector.userBearer.Substring(1, AbstractApiConnector.userBearer.Length - 2);
+            CUser user = new CUser(Email, Password);
+            AbstractApiConnector.UserBearer = Connector.Login("/user/login", user);
+            AbstractApiConnector.UserBearer = AbstractApiConnector.UserBearer.Substring(1, AbstractApiConnector.UserBearer.Length - 2);
             this.Close();
         }
     }

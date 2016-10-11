@@ -12,7 +12,7 @@ namespace profiwowdektop
         /// <summary>
         /// constant adres to serv
         /// </summary>
-        const string API_SERV_URL = "http://profi-wow-api.sebrogala.com";
+        const string ApiServUrl = "http://profi-wow-api.sebrogala.com";
         
 
 

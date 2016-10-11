@@ -13,14 +13,14 @@ namespace profiwowdektop
         {
             string serializowanyuser = JsonConvert.SerializeObject(userregister);
 
-            return this.GetRespPOST(url, serializowanyuser);
+            return this.GetRespPost(url, serializowanyuser);
         }
 
         public string Login(string url, CUser user)
         {
             string serializowanyuser = JsonConvert.SerializeObject(user);
 
-           return this.GetRespPOST(url, serializowanyuser);
+           return this.GetRespPost(url, serializowanyuser);
             
         }
     }

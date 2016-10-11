@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="LogiInWindow" Height="200" Width="250">
     <Grid>
-        <TextBox x:Name="tbxLogin" HorizontalAlignment="Left" Height="23" Margin="35,35,0,0" TextWrapping="NoWrap" Text="grzegorz.pietrzak321@gmail.com" VerticalAlignment="Top" Width="180"/>
-        <TextBox x:Name="tbxPassword" HorizontalAlignment="Left" Height="23" Margin="35,70,0,0" TextWrapping="NoWrap" Text="qwerty123" VerticalAlignment="Top" Width="180"/>
-        <Button x:Name="button" Content="Log In" HorizontalAlignment="Left" Margin="80,115,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <TextBox x:Name="TbxLogin" HorizontalAlignment="Left" Height="23" Margin="35,35,0,0" TextWrapping="NoWrap" Text="grzegorz.pietrzak321@gmail.com" VerticalAlignment="Top" Width="180"/>
+        <TextBox x:Name="TbxPassword" HorizontalAlignment="Left" Height="23" Margin="35,70,0,0" TextWrapping="NoWrap" Text="qwerty123" VerticalAlignment="Top" Width="180"/>
+        <Button x:Name="Button" Content="Log In" HorizontalAlignment="Left" Margin="80,115,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
     </Grid>
 </Window>

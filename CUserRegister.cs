@@ -2,9 +2,9 @@
 {
     public class CUserRegister
     {
-        public string username;
-        public string email;
-        public string password;
-        public string passwordretype;
+        public string Username;
+        public string Email;
+        public string Password;
+        public string Passwordretype;
     }
 }

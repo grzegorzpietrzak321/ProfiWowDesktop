@@ -1,29 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 using System.Windows;
 
 namespace profiwowdektop
 {
     public abstract class AbstractApiConnector
     {
-        const string API_SERV_URL = "http://profi-wow-api.sebrogala.com";
-        public static string userBearer;
+        const string ApiServUrl = "http://profi-wow-api.sebrogala.com";
+        public static string UserBearer;
+        private object responseFromServer;
 
         /// <summary>
         /// make a request for the specified URL, read response and return it's content
         /// throw a WebException if response is not 200
         /// </summary>
-        public string GetRespPOST(string url, string requestBody, string requestHeader = "")
+        public string GetRespPost(string url, string requestBody, string requestHeader = "")
         {
             try
             {
                 // 1. create request
-                WebRequest request = WebRequest.Create(API_SERV_URL + url);
+                WebRequest request = WebRequest.Create(ApiServUrl + url);
 
                 // 2. set credentialis if required
                 request.Credentials = CredentialCache.DefaultCredentials;
@@ -36,11 +33,11 @@ namespace profiwowdektop
                 request.ContentType = "application/json; charset=UTF-8";
 
                 // 5. do some body to send
-                using (var StreamWriter = new StreamWriter(request.GetRequestStream()))
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
-                    StreamWriter.Write(requestBody);
-                    StreamWriter.Flush();
-                    StreamWriter.Close();
+                    streamWriter.Write(requestBody);
+                    streamWriter.Flush();
+                    streamWriter.Close();
                 }
 
                 // 6. get response
@@ -69,11 +66,11 @@ namespace profiwowdektop
 
         }
 
-        public string GetRespGET(string url, string requestHeader)
+        public void GetRespGet(string url, string requestHeader)
         {
             // 1. create request
-            WebRequest request = WebRequest.Create(API_SERV_URL + url);
-            
+            WebRequest request = WebRequest.Create(ApiServUrl + url);
+
             // 2. set credentialis if required
             request.Credentials = CredentialCache.DefaultCredentials;
             request.Timeout = 15000;
@@ -83,14 +80,14 @@ namespace profiwowdektop
             request.Headers = new WebHeaderCollection();
             request.Headers.Clear();
             request.Headers.Add("Authorization", requestHeader);
-            
 
-            
-            
+
+
+
 
             // 5. other stuff
             request.ContentType = "application/json; charset=UTF-8";
-            
+
             // 6. get response
             WebResponse response = request.GetResponse();
 
@@ -98,20 +95,22 @@ namespace profiwowdektop
             Stream dataStream = response.GetResponseStream();
 
             // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
+            if (dataStream != null)
+            {
+                StreamReader reader = new StreamReader(dataStream);
 
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
+                // Read the content.
+                responseFromServer = reader.ReadToEnd();
 
-            // Display the content.
-            Console.WriteLine(responseFromServer);
+                // Display the content.
+                Console.WriteLine(responseFromServer);
 
-            // Clean up the streams and the response.
-            reader.Close();
-            response.Close();
+                // Clean up the streams and the response.
+                reader.Close();
+                response.Close();
 
-            return responseFromServer;
-            return "";
+
+            }
         }
 
     }

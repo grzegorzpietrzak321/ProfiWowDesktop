@@ -2,13 +2,13 @@
 {
     public class CUser
     {
-        public string email;
-        public string password;
+        public string Email;
+        public string Password;
 
         public CUser(string mail, string pswd)
         {
-            email = mail;
-            password = pswd;
+            Email = mail;
+            Password = pswd;
         }
         
     }

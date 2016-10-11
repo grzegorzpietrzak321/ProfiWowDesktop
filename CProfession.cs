@@ -2,6 +2,6 @@
 {
     public class CProfession
     {
-        public string name;
+        public string Name;
     }
 }

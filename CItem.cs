@@ -2,15 +2,15 @@
 
 namespace profiwowdektop
 {
-    class CItem : IfaceItem
+    class CItem : IFaceItem
     {
-        public string name;
-        public string icon_src;
-        public int quantity;
-        public IList<IfaceItem> CItems;
+        public string Name;
+        public string IconSrc;
+        public int Quantity;
+        public IList<IFaceItem> CItems;
 
-       
-        public void AddComponent(IfaceItem item)
+
+        public void AddComponent(IFaceItem item)
         {
             CItems.Add(item);
         }
