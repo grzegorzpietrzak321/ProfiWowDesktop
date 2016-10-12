@@ -9,7 +9,7 @@ namespace profiwowdektop
     {
         const string ApiServUrl = "http://profi-wow-api.sebrogala.com";
         public static string UserBearer;
-        private object responseFromServer;
+        private object _responseFromServer;
 
         /// <summary>
         /// make a request for the specified URL, read response and return it's content
@@ -100,10 +100,10 @@ namespace profiwowdektop
                 StreamReader reader = new StreamReader(dataStream);
 
                 // Read the content.
-                responseFromServer = reader.ReadToEnd();
+                _responseFromServer = reader.ReadToEnd();
 
                 // Display the content.
-                Console.WriteLine(responseFromServer);
+                Console.WriteLine(_responseFromServer);
 
                 // Clean up the streams and the response.
                 reader.Close();
