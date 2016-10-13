@@ -3,14 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:profiwowdektop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="489.804" Width="671.648">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="264" Margin="20,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="487"/>
-        <Button x:Name="button1" Content="Log In" HorizontalAlignment="Left" Margin="428,10,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
-        <Button x:Name="button2" Content="Button" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
+        <Button x:Name="Button" Content="Show JWT Bearer" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="102" Click="button_Click"/>
+        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="53" Margin="20,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="483"/>
+        <Button x:Name="Button1" Content="Log In" HorizontalAlignment="Left" Margin="428,10,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <Button x:Name="Button2" Content="Button" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
+
+        <StackPanel Visibility="Visible" HorizontalAlignment="Left" Height="303" Margin="20,111,0,0" VerticalAlignment="Top" Width="405" Background="DarkRed">
+            <Label x:Name="ItemName" Content="Item name" Margin="149,0,0,0"/>
+            <Label x:Name="ItemPrice" Content="Item price" Margin="149,0,55,0"/>
+            <Image x:Name="ItemImage" Height="90" Margin="0,0,303,0" />
+            <TextBox x:Name="TextBoxQuantity" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="0,0,134,0"/>
+            <TextBox x:Name="TextBoxGold" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="0,0,134,0"/>
+            <TextBox x:Name="TextBoxSilver" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="0,0,134,0"/>
+            <TextBox x:Name="TextBoxBronze" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="0,0,134,0"/>
+            <Label x:Name="ItemPriceCopy" Margin="95,0,55,0" Content="Item price" Width="64"/>
+        </StackPanel>
 
     </Grid>
 </Window>

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Net;
 using System.Windows;
 
 namespace profiwowdektop
@@ -18,7 +14,7 @@ namespace profiwowdektop
         /// make a request for the specified URL, read response and return it's content
         /// throw a WebException if response is not 200
         /// </summary>
-        public string GetRespPOST(string url, string requestBody, string requestHeader = "")
+        public string GetRespPost(string url, string requestBody, string requestHeader = "")
         {
             try
             {
@@ -69,11 +65,11 @@ namespace profiwowdektop
 
         }
 
-        public string GetRespGET(string url, string requestHeader)
+        public string GetRespGet(string url, string requestHeader)
         {
             // 1. create request
             WebRequest request = WebRequest.Create(API_SERV_URL + url);
-            
+
             // 2. set credentialis if required
             request.Credentials = CredentialCache.DefaultCredentials;
             request.Timeout = 15000;
@@ -83,14 +79,14 @@ namespace profiwowdektop
             request.Headers = new WebHeaderCollection();
             request.Headers.Clear();
             request.Headers.Add("Authorization", requestHeader);
-            
 
-            
-            
+
+
+
 
             // 5. other stuff
             request.ContentType = "application/json; charset=UTF-8";
-            
+
             // 6. get response
             WebResponse response = request.GetResponse();
 
