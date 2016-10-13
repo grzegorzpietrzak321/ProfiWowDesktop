@@ -1,10 +1,10 @@
 ﻿namespace profiwowdektop
 {
-    interface IfaceItem
+    internal interface IFaceItem
     {
-        void AddComponent(IfaceItem item);
+        void AddComponent(IFaceItem item);
 
     }
-            
-       
+
+
 }

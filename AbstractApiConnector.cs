@@ -107,7 +107,6 @@ namespace profiwowdektop
             response.Close();
 
             return responseFromServer;
-            return "";
         }
 
     }
