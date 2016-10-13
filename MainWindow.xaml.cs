@@ -13,6 +13,7 @@ namespace profiwowdektop
         public MainWindow()
         {
             InitializeComponent();
+            //test
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
