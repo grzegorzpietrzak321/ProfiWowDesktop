@@ -1,6 +1,6 @@
 ﻿namespace profiwowdektop
 {
-    class CComponents
+    public class CComponents
     {
         public string name;
         public string icon_src;
