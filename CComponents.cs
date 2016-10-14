@@ -4,7 +4,8 @@
     {
         public string name;
         public string icon_src;
-        public int quantity;
         public CPrice price_each;
+        public int quantity;
+
     }
 }

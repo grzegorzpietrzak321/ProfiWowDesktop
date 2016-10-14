@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace profiwowdektop
@@ -60,24 +62,75 @@ namespace profiwowdektop
             itemName = itemName.Replace(' ', '_');
             var items = connector.GetRespGet("/item/" + itemName, "Authorization: Bearer " + AbstractApiConnector.userBearer);
 
+            //try
+            // {
+            CItem item = JsonConvert.DeserializeObject<CItem>(items);
+
+            ItemName.Content = item.name;
+            ItemImage.Source = new BitmapImage(new Uri("http://" + item.icon_src));
+            ItemPrice.Content = " ";
 
 
-            try
+             
+
+            foreach (CComponents itemComponent in item.components)
             {
-                CItem item = JsonConvert.DeserializeObject<CItem>(items);
+                var StackPanelBottomDyn = new StackPanel();
+
+                
 
 
+                //stackpanel props
+                StackPanelBottomDyn.Width = 160;
+                StackPanelBottomDyn.Height = 171;
+                StackPanelBottomDyn.Orientation = Orientation.Vertical;
+                StackPanelBottomDyn.VerticalAlignment = VerticalAlignment.Top;
+                StackPanelBottomDyn.HorizontalAlignment = HorizontalAlignment.Left;
 
-                ItemImage.Source = new BitmapImage(new Uri("http://" + item.icon_src));
 
+                StackPanelBottomDyn.Background = Brushes.NavajoWhite;
 
+                //tools in panel
+                //label
+                StackPanelBottomDyn.Children.Add(new Label { Content = itemComponent.name });
 
+                //image
+                StackPanelBottomDyn.Children.Add(new Image
+                {
+                    Source = new BitmapImage(new Uri("http://" + itemComponent.icon_src)),
+                    Stretch = Stretch.Fill,
+                    Width = 56,
+                    Height = 56
+                });
+
+                //price - textbox
+                StackPanelBottomDyn.Children.Add(new Label { Content = "AH price" });
+                StackPanelBottomDyn.Children.Add(new TextBox
+                {
+                    Text = itemComponent.price_each.ah_price.ToString()
+                });
+                StackPanelBottomDyn.Children.Add(new Label { Content = "USER price" });
+                StackPanelBottomDyn.Children.Add(new TextBox
+                {
+                    Text = itemComponent.price_each.user_price.ToString()
+                });
+
+                //add this panel to bottom panel
+                StackPanelBottom.Children.Add(StackPanelBottomDyn);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("nie mozna odnalezc przedmiotu");
 
-            }
+
+
+            // ItemName9.Content = item.components.
+
+
+
+            //  }
+            //  catch (Exception)
+            //  {
+            //MessageBox.Show("nie mozna odnalezc przedmiotu");
+
+            //  }
 
 
 
