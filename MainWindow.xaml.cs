@@ -13,13 +13,14 @@ namespace profiwowdektop
         public MainWindow()
         {
             InitializeComponent();
-            //test
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void ButtonLogIn_Click(object sender, RoutedEventArgs e)
         {
             LogiInWindow loginWindow = new LogiInWindow();
             loginWindow.Show();
+
+            //if(loginWindow.Closed)
         }
 
         private void button_Click(object sender, RoutedEventArgs e)

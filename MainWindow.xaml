@@ -10,99 +10,34 @@
     </Window.Background>
     <Grid>
         <Button x:Name="Button" Content="Show JWT Bearer" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="102" Click="button_Click"/>
-        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="53" Margin="20,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="483"/>
-        <Button x:Name="Button1" Content="Log In" HorizontalAlignment="Left" Margin="428,10,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click"/>
+        <TextBox x:Name="TextBox" HorizontalAlignment="Left" Height="53" Margin="20,84,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="140"/>
+        <Button x:Name="ButtonLogIn" Content="Log In" HorizontalAlignment="Left" Margin="428,10,0,0" VerticalAlignment="Top" Width="75" Click="ButtonLogIn_Click"/>
         <Button x:Name="Button2" Content="Button" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
 
-        <StackPanel Visibility="Visible" HorizontalAlignment="Left" Height="140" Margin="20,111,0,0" VerticalAlignment="Top" Width="140" Background="#668B0000">
+        <StackPanel Name="StackPanel1" Visibility="Visible" HorizontalAlignment="Left" Height="140" Margin="20,150,0,0" VerticalAlignment="Top" Width="140" Background="#668B0000">
             <Grid>
                 <Image x:Name="ItemImage" Height="56" HorizontalAlignment="Left" Width="56" Source="img/56x56.png" />
-                <Label x:Name="ItemName" Content="Item name" HorizontalAlignment="Left" Width="162" Margin="60,0,0,0" Foreground="White"/>
-                <Label x:Name="ItemPrice" Content="Item price" Margin="60,24,0,0" HorizontalAlignment="Left" Width="162" Foreground="White"/>
+                <Label x:Name="ItemName" Content="Item name" HorizontalAlignment="Left" Width="80" Margin="60,0,0,0" Foreground="White"/>
+                <Label x:Name="ItemPrice" Content="Item price" Margin="60,24,0,0" HorizontalAlignment="Left" Width="80" Foreground="White"/>
             </Grid>
-            <TextBox x:Name="TextBoxQuantity" Height="23" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Width="115"/>
+            <TextBox x:Name="TextBoxQuantity" Height="23" TextWrapping="Wrap" HorizontalAlignment="Left" Width="140"/>
             <Grid>
-                <TextBox x:Name="TextBoxGold" Height="23" TextWrapping="Wrap" Text="TextBox" Foreground="Gold" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
-                <TextBox x:Name="TextBoxSilver" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="40,0,0,0" Foreground="Silver" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
-                <TextBox x:Name="TextBoxBronze" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="80,0,0,0" Foreground="#FFF17F2E" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
+                <TextBox x:Name="TextBoxGold" Height="23" TextWrapping="Wrap" Foreground="Gold" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
+                <TextBox x:Name="TextBoxSilver" Height="23" TextWrapping="Wrap" Margin="40,0,0,0" Foreground="Silver" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
+                <TextBox x:Name="TextBoxBronze" Height="23" TextWrapping="Wrap" Margin="80,0,0,0" Foreground="#FFF17F2E" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
             </Grid>
             <Label x:Name="ItemPriceCopy" Margin="0,0,0,0" Content="Item price" Width="64" HorizontalAlignment="Left" Foreground="White"/>
         </StackPanel>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="100" Margin="640,5,0,0" VerticalAlignment="Top" Width="100" Source="img/logo.png">
+        <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="100" Margin="640,5,0,0" VerticalAlignment="Top" Width="100" Source="img/logo.png">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="img/logo.png"/>
             </Image.OpacityMask>
         </Image>
-        <StackPanel Visibility="Visible" HorizontalAlignment="Left" Height="140" Margin="165,111,0,0" VerticalAlignment="Top" Width="140" Background="DarkRed">
-            <Grid>
-                <Image x:Name="ItemImage1" Height="56" HorizontalAlignment="Left" Width="56" Source="img/56x56.png" />
-                <Label x:Name="ItemName1" Content="Item name" HorizontalAlignment="Left" Width="162" Margin="60,0,0,0"/>
-                <Label x:Name="ItemPrice1" Content="Item price" Margin="60,24,0,0" HorizontalAlignment="Left" Width="162"/>
-            </Grid>
-            <TextBox x:Name="TextBoxQuantity1" Height="23" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Width="115"/>
-            <Grid>
-                <TextBox x:Name="TextBoxGold1" Height="23" TextWrapping="Wrap" Text="TextBox" Background="Gold" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxSilver1" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="40,0,0,0" Background="Silver" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxBronze1" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="80,0,0,0" Background="SaddleBrown" HorizontalAlignment="Left" Width="35"/>
-            </Grid>
-            <Label x:Name="ItemPriceCopy1" Margin="0,0,0,0" Content="Item price" Width="64" HorizontalAlignment="Left"/>
-        </StackPanel>
-        <StackPanel Visibility="Visible" HorizontalAlignment="Left" Height="140" Margin="310,111,0,0" VerticalAlignment="Top" Width="140" Background="DarkRed">
-            <Grid>
-                <Image x:Name="ItemImage2" Height="56" HorizontalAlignment="Left" Width="56" Source="img/56x56.png" />
-                <Label x:Name="ItemName2" Content="Item name" HorizontalAlignment="Left" Width="162" Margin="60,0,0,0"/>
-                <Label x:Name="ItemPrice2" Content="Item price" Margin="60,24,0,0" HorizontalAlignment="Left" Width="162"/>
-            </Grid>
-            <TextBox x:Name="TextBoxQuantity2" Height="23" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Width="115"/>
-            <Grid>
-                <TextBox x:Name="TextBoxGold2" Height="23" TextWrapping="Wrap" Text="TextBox" Background="Gold" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxSilver2" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="40,0,0,0" Background="Silver" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxBronze2" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="80,0,0,0" Background="SaddleBrown" HorizontalAlignment="Left" Width="35"/>
-            </Grid>
-            <Label x:Name="ItemPriceCopy2" Margin="0,0,0,0" Content="Item price" Width="64" HorizontalAlignment="Left"/>
-        </StackPanel>
-        <StackPanel Visibility="Visible" HorizontalAlignment="Left" Height="140" Margin="455,110,0,0" VerticalAlignment="Top" Width="140" Background="DarkRed">
-            <Grid>
-                <Image x:Name="ItemImage3" Height="56" HorizontalAlignment="Left" Width="56" Source="img/56x56.png" />
-                <Label x:Name="ItemName3" Content="Item name" HorizontalAlignment="Left" Width="162" Margin="60,0,0,0"/>
-                <Label x:Name="ItemPrice3" Content="Item price" Margin="60,24,0,0" HorizontalAlignment="Left" Width="162"/>
-            </Grid>
-            <TextBox x:Name="TextBoxQuantity3" Height="23" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Width="115"/>
-            <Grid>
-                <TextBox x:Name="TextBoxGold3" Height="23" TextWrapping="Wrap" Text="TextBox" Background="Gold" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxSilver3" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="40,0,0,0" Background="Silver" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxBronze3" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="80,0,0,0" Background="SaddleBrown" HorizontalAlignment="Left" Width="35"/>
-            </Grid>
-            <Label x:Name="ItemPriceCopy3" Margin="0,0,0,0" Content="Item price" Width="64" HorizontalAlignment="Left"/>
-        </StackPanel>
-        <StackPanel Visibility="Visible" HorizontalAlignment="Left" Height="140" Margin="600,110,0,0" VerticalAlignment="Top" Width="140" Background="DarkRed">
-            <Grid>
-                <Image x:Name="ItemImage4" Height="56" HorizontalAlignment="Left" Width="56" Source="img/56x56.png" />
-                <Label x:Name="ItemName4" Content="Item name" HorizontalAlignment="Left" Width="162" Margin="60,0,0,0"/>
-                <Label x:Name="ItemPrice4" Content="Item price" Margin="60,24,0,0" HorizontalAlignment="Left" Width="162"/>
-            </Grid>
-            <TextBox x:Name="TextBoxQuantity4" Height="23" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Width="115"/>
-            <Grid>
-                <TextBox x:Name="TextBoxGold4" Height="23" TextWrapping="Wrap" Text="TextBox" Background="Gold" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxSilver4" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="40,0,0,0" Background="Silver" HorizontalAlignment="Left" Width="35"/>
-                <TextBox x:Name="TextBoxBronze4" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="80,0,0,0" Background="SaddleBrown" HorizontalAlignment="Left" Width="35"/>
-            </Grid>
-            <Label x:Name="ItemPriceCopy4" Margin="0,0,0,0" Content="Item price" Width="64" HorizontalAlignment="Left"/>
-        </StackPanel>
-        <StackPanel Visibility="Visible" HorizontalAlignment="Left" Height="140" Margin="20,269,0,0" VerticalAlignment="Top" Width="140" Background="#668B0000">
-            <Grid>
-                <Image x:Name="ItemImage5" Height="56" HorizontalAlignment="Left" Width="56" Source="img/56x56.png" />
-                <Label x:Name="ItemName5" Content="Item name" HorizontalAlignment="Left" Width="162" Margin="60,0,0,0" Foreground="White"/>
-                <Label x:Name="ItemPrice5" Content="Item price" Margin="60,24,0,0" HorizontalAlignment="Left" Width="162" Foreground="White"/>
-            </Grid>
-            <TextBox x:Name="TextBoxQuantity5" Height="23" TextWrapping="Wrap" Text="TextBox" HorizontalAlignment="Left" Width="115"/>
-            <Grid>
-                <TextBox x:Name="TextBoxGold5" Height="23" TextWrapping="Wrap" Text="TextBox" Foreground="Gold" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
-                <TextBox x:Name="TextBoxSilver5" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="40,0,0,0" Foreground="Silver" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
-                <TextBox x:Name="TextBoxBronze5" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="80,0,0,0" Foreground="#FFF17F2E" HorizontalAlignment="Left" Width="35" Background="Transparent" FontWeight="Bold" FontSize="16"/>
-            </Grid>
-            <Label x:Name="ItemPriceCopy5" Margin="0,0,0,0" Content="Item price" Width="64" HorizontalAlignment="Left" Foreground="White"/>
-        </StackPanel>
+        <ComboBox x:Name="ComboBoxProfessions" HorizontalAlignment="Left" Margin="20,44,0,0" VerticalAlignment="Top" Width="334"/>
 
+        <ComboBox x:Name="ComboBoxLastItems" HorizontalAlignment="Left" Margin="178,84,0,0" VerticalAlignment="Top" Width="176"/>
+        <TextBox x:Name="TxBoxAddItem" HorizontalAlignment="Left" Height="23" Margin="178,114,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="176"/>
+        <Button x:Name="BtnAddItem" Content="Add item" HorizontalAlignment="Left" Margin="383,99,0,0" VerticalAlignment="Top" Width="75"/>
+        
     </Grid>
 </Window>
