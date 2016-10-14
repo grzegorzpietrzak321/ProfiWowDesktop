@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CComponents.cs" />
+    <Compile Include="CPrice.cs" />
     <Compile Include="UserApiConnector.cs" />
     <Page Include="LogiInWindow.xaml">
       <SubType>Designer</SubType>

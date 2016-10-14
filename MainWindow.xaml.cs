@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace profiwowdektop
 {
@@ -23,15 +28,61 @@ namespace profiwowdektop
             //if(loginWindow.Closed)
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void ButtonShowJWTBearer_Click(object sender, RoutedEventArgs e)
         {
             TextBox.Text = AbstractApiConnector.userBearer;
+
         }
 
-        private void button2_Click(object sender, RoutedEventArgs e)
+        private void ButtonGetProfessions_Click(object sender, RoutedEventArgs e)
         {
             AbstractApiConnector connector = new UserApiConnector();
-            connector.GetRespGet("/professions", "Authorization: Bearer " + AbstractApiConnector.userBearer);
+
+            var profeskistring = connector.GetRespGet("/professions",
+                "Authorization: Bearer " + AbstractApiConnector.userBearer);
+
+            IEnumerable<CProfession> professions =
+                JsonConvert.DeserializeObject<IEnumerable<CProfession>>(profeskistring);
+
+            foreach (CProfession item in (IList)professions)
+            {
+                ComboBoxProfessions.Items.Add(item.name);
+            }
+
+
+        }
+
+        private void BtnSearchItem_Click(object sender, RoutedEventArgs e)
+        {
+            AbstractApiConnector connector = new UserApiConnector();
+
+            string itemName = TxBoxSearchItem.Text;
+            itemName = itemName.Replace(' ', '_');
+            var items = connector.GetRespGet("/item/" + itemName, "Authorization: Bearer " + AbstractApiConnector.userBearer);
+
+
+
+            try
+            {
+                CItem item = JsonConvert.DeserializeObject<CItem>(items);
+
+
+
+                ItemImage.Source = new BitmapImage(new Uri("http://" + item.icon_src));
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("nie mozna odnalezc przedmiotu");
+
+            }
+
+
+
+
+
         }
     }
 }
