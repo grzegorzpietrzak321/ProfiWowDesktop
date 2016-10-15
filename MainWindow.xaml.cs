@@ -23,6 +23,8 @@ namespace profiwowdektop
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
 
         private void ButtonLogIn_Click(object sender, RoutedEventArgs e)
@@ -63,11 +65,16 @@ namespace profiwowdektop
 
             string itemName = TxBoxSearchItem.Text;
             itemName = itemName.Replace(' ', '_');
-            var items = connector.GetRespGet("/item/" + itemName, "Authorization: Bearer " + AbstractApiConnector.userBearer);
+            var itemsstring = connector.GetRespGet("/item/" + itemName, "Authorization: Bearer " + AbstractApiConnector.userBearer);
 
             try
             {
-                CItem item = JsonConvert.DeserializeObject<CItem>(items);
+                CItem item = JsonConvert.DeserializeObject<CItem>(itemsstring);
+
+                ListCItems = new List<CItem>();
+                ListCComponentses = new List<CComponents>();
+
+
 
                 ListCItems.Add(item);
 
@@ -141,5 +148,23 @@ namespace profiwowdektop
 
 
         }
+
+
+
+        private void AddItemToPanel(bool Top, string name, string icon_src, string price)
+        {
+            if (Top) //if true add item to top panel
+            {
+
+            }
+            else //ifa false add item to bottom panel
+            {
+
+            }
+        }
+
+
+
+
     }
 }
