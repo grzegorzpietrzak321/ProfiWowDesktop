@@ -74,9 +74,13 @@ namespace profiwowdektop
                 ListCItems = new List<CItem>();
                 ListCComponentses = new List<CComponents>();
 
-
-
                 ListCItems.Add(item);
+
+                foreach (CItem itemItem in ListCItems)
+                {
+                    AddItemToPanel(true, itemItem.name, itemItem.icon_src,
+                        "", "");
+                }
 
                 foreach (var component in item.components)
                 {
@@ -89,77 +93,63 @@ namespace profiwowdektop
 
                 foreach (CComponents itemComponent in ListCComponentses)
                 {
-                    var StackPanelBottomDyn = new StackPanel();
-
-                    //stackpanel props
-                    StackPanelBottomDyn.Width = 160;
-                    StackPanelBottomDyn.Height = 171;
-                    StackPanelBottomDyn.Orientation = Orientation.Vertical;
-                    StackPanelBottomDyn.VerticalAlignment = VerticalAlignment.Top;
-                    StackPanelBottomDyn.HorizontalAlignment = HorizontalAlignment.Left;
-
-
-                    StackPanelBottomDyn.Background = Brushes.NavajoWhite;
-
-                    //tools in panel
-                    //label
-                    StackPanelBottomDyn.Children.Add(new Label { Content = itemComponent.name });
-
-                    //image
-                    StackPanelBottomDyn.Children.Add(new Image
-                    {
-                        Source = new BitmapImage(new Uri("http://" + itemComponent.icon_src)),
-                        Stretch = Stretch.Fill,
-                        Width = 56,
-                        Height = 56
-                    });
-
-                    //price - textbox
-                    StackPanelBottomDyn.Children.Add(new Label { Content = "AH price" });
-                    StackPanelBottomDyn.Children.Add(new TextBox
-                    {
-                        Text = itemComponent.price_each.ah_price.ToString()
-                    });
-                    StackPanelBottomDyn.Children.Add(new Label { Content = "USER price" });
-                    StackPanelBottomDyn.Children.Add(new TextBox
-                    {
-                        Text = itemComponent.price_each.user_price.ToString()
-                    });
-
-                    //add this panel to bottom panel
-                    StackPanelBottom.Children.Add(StackPanelBottomDyn);
+                    AddItemToPanel(false, itemComponent.name, itemComponent.icon_src,
+                        itemComponent.price_each.ah_price.ToString(), itemComponent.price_each.user_price.ToString());
                 }
-
-
-
-                // ItemName9.Content = item.components.
-
-
-
             }
             catch (Exception)
             {
                 MessageBox.Show("nie mozna odnalezc przedmiotu");
-
             }
-
-
-
-
-
         }
 
 
 
-        private void AddItemToPanel(bool Top, string name, string icon_src, string price)
+        private void AddItemToPanel(bool Top, string name, string icon_src, string priceAH, string priceUSER)
         {
+            var StackPanelBottomDyn = new StackPanel();
+            StackPanelBottomDyn.Width = 160;
+            StackPanelBottomDyn.Height = 171;
+            StackPanelBottomDyn.Orientation = Orientation.Vertical;
+            StackPanelBottomDyn.VerticalAlignment = VerticalAlignment.Top;
+            StackPanelBottomDyn.HorizontalAlignment = HorizontalAlignment.Left;
+
+
+            StackPanelBottomDyn.Background = Brushes.NavajoWhite;
+
+            //tools in panel
+            //label
+            StackPanelBottomDyn.Children.Add(new Label { Content = name });
+
+            //image
+            StackPanelBottomDyn.Children.Add(new Image
+            {
+                Source = new BitmapImage(new Uri("http://" + icon_src)),
+                Stretch = Stretch.Fill,
+                Width = 56,
+                Height = 56
+            });
+
+            //price - textbox
+            StackPanelBottomDyn.Children.Add(new Label { Content = "AH price" });
+            StackPanelBottomDyn.Children.Add(new TextBox
+            {
+                Text = priceAH
+            });
+            StackPanelBottomDyn.Children.Add(new Label { Content = "USER price" });
+            StackPanelBottomDyn.Children.Add(new TextBox
+            {
+                Text = priceUSER
+            });
+
+
             if (Top) //if true add item to top panel
             {
-
+                StackPanelTop.Children.Add(StackPanelBottomDyn);
             }
             else //ifa false add item to bottom panel
             {
-
+                StackPanelBottom.Children.Add(StackPanelBottomDyn);
             }
         }
 
